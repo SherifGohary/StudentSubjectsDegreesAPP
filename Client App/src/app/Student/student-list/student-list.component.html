@@ -1,0 +1,44 @@
+<select (change)="getStudents()" [(ngModel)]="stdId" class="form-control" >
+  <option *ngFor="let item of stdlist" [value]="item.ID" >{{item.Name}}</option>
+</select>
+
+
+<div style="font-size:x-large">
+  <table >
+    <tr>
+      <td style="color:red" class="badge">ID : </td>
+      <td></td>
+      <td>{{std.ID}}</td>        
+    </tr>
+    <tr>
+        <td style="color:red" class="badge">Name :</td>
+      <td></td>
+        <td>{{std.Name}}</td>        
+    </tr>
+    <tr>
+        <td style="color:red" class="badge">Age :</td>
+      <td></td>
+        <td>{{std.Age}}</td>        
+      </tr>
+      <tr>
+          <td style="color:red" class="badge">Adress :</td>
+      <td></td>
+          <td>{{std.Adress}}</td>        
+        </tr>
+        <tr>
+            <td style="color:red" class="badge">Image :</td>
+      <td></td>
+            <td><img [src]="'data:image/jpeg;base64,'+std.Image" height="50" width="50"></td>
+        </tr>
+        <tr>
+            <td style="color:red" class="badge">Subject :</td><td></td>
+            <td><select (change)="getdegree()" [(ngModel)]="subId" class="form-control" >
+                <option *ngFor="let item of studentSubjectlst" [value]="item.SubID" >{{item.Subject.Name}}</option>
+              </select>
+            </td>          
+        </tr> 
+        <tr>
+          <td style="color:red" class="badge">Degree :</td>  
+          <td>{{subDegree}}</td>
+        </tr>
+</table>

@@ -1,0 +1,126 @@
+
+<form   class="form-horizontal container"   (submit)="addstudent(frmref)" enctype="text/plain"  role="form" #frmref="ngForm">
+
+  <!-- ngform da directive byt3ml m3 el form lma ast5dm el formsModule byb2a m3ah el dataa bta3t el form w hya valid wala la2 -->
+<!-- mfesh hna action 3shan msh hro7 3ala url dana fel submit hklm function w hb3tlha data bta3t el form -->
+<!-- mfesh hna method 3shan el form msh btklm el server 3alatol da el service hya ele btklm el server -->
+<!-- kol input lw 3mlt inspect 3aleh hla2y m3ak class mslan zay pristine de m3nah eny lsa m8yrtsh feeh lw 8yrt hyb2a dirty w class valid w invalid -->
+    <!-- 3shan a8yr fel style bta3 el input aro7 ll css style -->
+
+    <!-- fe module gahz ll validation esmo ng2-validation  a3ml install w import fel appModule -->
+    <div class="form-group">
+      <legend>Add Student</legend>
+    </div>
+
+<!-- 3shan a7ot el data b2a mn el textboxs l gwa el ngform lazm adeha name w ngmodel -->
+
+    <div class="form-group" hidden >
+      <label class="col-sm-3 control-label">Id</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control"
+
+        name="ID"  
+        [(ngModel)]="nstd.ID"
+        #idref="ngModel"
+        
+
+        >
+        <div *ngIf="idref.invalid" class="col-sm-3">
+          <span style="color:red" *ngIf="idref.errors?.required">Id is required</span>
+       </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Name</label>
+      <div class="col-sm-4">
+        <input class="form-control"
+        
+        name="Name"
+        [(ngModel)]="nstd.Name"
+        #nameref="ngModel"
+        required
+
+        minlength="3"
+        maxlength="20"
+        >
+
+      </div>
+      <div class="col-sm-4" *ngIf="nameref.invalid">
+        <span style="color:red" *ngIf="nameref.errors?.required && nameref.touched">*</span>
+        <span style="color:red" *ngIf="nameref.errors?.minlength && nameref.touched">min length 3</span>
+        <span style="color:red" *ngIf="nameref.errors?.maxlength && nameref.touched">max length 20</span>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Age</label>
+      <div class="col-sm-4">
+        <input class="form-control"
+        type="number"
+
+        name="Age"
+        [(ngModel)]="nstd.Age"
+        #ageref="ngModel"
+        required
+
+        [range]="[18,40]"
+        
+        
+        >
+
+      </div>
+      <div class="col-sm-4" *ngIf="ageref.invalid">
+        <span style="color:red" *ngIf="ageref.errors?.required && ageref.touched">*</span>
+        <span style="color:red" *ngIf="ageref.errors?.range && ageref.touched">min 18 Max 40</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Adress</label>
+      <div class="col-sm-4">
+        <input class="form-control"
+        
+        name="adress"
+        [(ngModel)]="nstd.Adress"
+        #adressref="ngModel"
+        required
+
+        minlength="10"
+        maxlength="40"
+        >
+
+      </div>
+      <div class="col-sm-4" *ngIf="adressref.invalid">
+        <span style="color:red" *ngIf="adressref.errors?.required && adressref.touched">*</span>
+        <span style="color:red" *ngIf="adressref.errors?.minlength && adressref.touched">min length 10</span>
+        <span style="color:red" *ngIf="adressref.errors?.maxlength && adressref.touched">max length 20</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Image</label>
+      <div class="col-sm-4">
+        <input class="form-control"
+        type="file"
+        name="image"
+        [(ngModel)]="nstd.Image"
+        #imageref="ngModel"
+        required
+        (change)="upload($event)"
+        >
+
+      </div>
+      <div class="col-sm-4" *ngIf="imageref.invalid">
+        <span style="color:red" *ngIf="imageref.errors?.required && imageref.touched">*</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <button [disabled]="frmref.invalid" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+</form>
+
+<!-- 3shan ashof el idref ele bysawy el ngmodel da gwah eeeh  -->

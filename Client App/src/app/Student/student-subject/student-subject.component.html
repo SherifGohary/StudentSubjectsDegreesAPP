@@ -1,0 +1,18 @@
+
+<mat-form-field>
+    <mat-label>Students</mat-label>
+    <mat-select [(ngModel)]="newstds" multiple>
+      <mat-option *ngFor="let item of students" [value]="item.ID">{{item.Name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <mat-label>Subjects</mat-label>
+    <mat-select [(ngModel)]="newsubs" multiple>
+      <mat-option *ngFor="let item of subjects" [value]="item.ID">{{item.Name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button (click)="AddStudentSubject()">Add</button>
+  
+  
+  

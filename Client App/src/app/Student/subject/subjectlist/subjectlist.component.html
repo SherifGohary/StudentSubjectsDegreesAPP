@@ -1,0 +1,69 @@
+
+<button type="button" class="btn btn-default" (click)="showAllsubject()" class="btn btn-success">load</button>
+<br/>
+
+<input type="text" placeholder="Subject Name" [(ngModel)]="nsb.Name">
+<br/>
+
+<button (click)="AddNewsubject()" class="btn btn-primary">Add</button>
+<br/>
+<br/>
+
+
+
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of subjectlst">
+      <td>{{item.ID}}</td>
+      <td>{{item.Name}}</td>
+
+<td>
+
+  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal" (click)="getsubjectData(item.ID)">Edit</button>
+  
+  <button (click)="deletesubject(item.ID)" class="btn btn-success m-1">Delete</button>
+
+
+</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Form</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Subject Name</label>
+        <input type="text"  [(ngModel)]="nsb.Name" class="form form-control" />
+
+        <br/>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="editsubject()" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+
+
